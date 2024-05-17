@@ -1,0 +1,33 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <title>Flask</title>
+  </head>
+  <body>
+    <p>Hello Flask!!! {{user}}</p>
+    <hr />
+    <input id="name" type="text" value="peter" />
+    <input id="age" type="text" value="27" />
+    <button id="request">Request</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#request").on("click", function () {
+          var params = {
+            name: $("#name").val(),
+            age: $("#age").val(),
+          };
+          console.log(params);
+          var url = "/people?" + $.param(params);
+          console.log(url);
+          $.getJSON(url, function(response) {
+            console.log(response);
+            /* var tag = "<p>name : " + response.name + "</p>";
+                    tag += "<p>age : " + response.age + "</p>";
+                    $(".result").html(tag); */
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
